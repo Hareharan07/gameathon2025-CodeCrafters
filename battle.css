@@ -1,0 +1,106 @@
+:root {
+    --primary-color: #4facfe;
+    --secondary-color: #00f2fe;
+    --background-color: #f0f2f5;
+    --text-color: #333;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.battle-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 300px;
+    margin: 2rem auto;
+}
+
+input {
+    padding: 1rem;
+    border: 2px solid rgba(79, 172, 254, 0.2);
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 1rem 2rem; 
+    margin: 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+.hidden {
+    display: none;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.timer {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.option {
+    padding: 1rem;
+    border: 2px solid rgba(79, 172, 254, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analytics Quiz - Skill Toon</title>
+    <link rel="stylesheet" href="course.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h2>Data Analytics Adventure</h2>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="quiz-content" id="quizContent">
+
+        </div>
+
+        <div class="score-display">
+            Score: <span id="score">0</span>
+        </div>
+    </div>
+
+    <div class="chat-wrapper">
+        <button class="chat-toggle" id="chatToggle">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+        </button>
+        <div class="chat-container" id="chatContainer" style="display: none;">
+            <div class="chat-header">
+                <h3>Quiz Assistant</h3>
+                <button class="close-chat" id="closeChat">×</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <form class="chat-input" id="chatForm">
+                <input type="text" id="userInput" placeholder="Ask for help..." autocomplete="off">
+                <button type="submit">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="character-container">
+        <div class="character" id="quizCharacter">
+            <div class="face">
+                <div class="eyes"></div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration -->
+
+    <div class="celebration" id="celebration">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+    </div>
+
+    <script src="da.js"></script>
+</body>
+</html>
