@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Skill Toon</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Righteous&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <a href="index.html" class="site-title">Skill Toon</a>
+        </div>
+    </header>
+
+    <div class="signup-container">
+        <div class="signup-card">
+            <h2 class="signup-title">Create Account</h2>
+            <form class="signup-form" id="signupform">
+                <div class="form-group">
+                    <input type="text" id="fullname" required>
+                    <label for="fullname">Full Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="signup-email" required>
+                    <label for="signup-email">Email Address</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirm-password" required>
+                    <label for="confirm-password">Confirm Password</label>
+                </div>
+                <button type="submit" class="signup-submit-btn">Create Account</button>
+            </form>
+            <p class="login-link">Already have an account? <a href="login.html">Log In</a></p>
+        </div>
+    </div>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+<script src="signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Learning - Skill Toon</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Righteous&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header-home">
+        <div class="nav-container">
+            <a href="home.html" class="site-title">Skill Toon</a>
+            <nav class="nav-menu">
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="mylearning.html" class="nav-link active">My Learning</a>
+                <div class="user-profile">
+                    <img src="src/OIP.jpg" alt="Profile" class="profile-pic">
+                    <div class="dropdown-content">
+                        <a href="profile.html">Profile</a>
+                        <a href="#settings">Settings</a>
+                        <a href="index.html">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="mylearning-main">
+        <section class="learning-section">
+            <h1>My Learning Journey</h1>
+            <div class="learning-progress">
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <h3>Courses In Progress</h3>
+                        <span class="stat-number" id="coursesCount">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Progress</h3>
+                        <span class="stat-number">0%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="my-courses" id="myCoursesList">
+                
+                <div class="empty-state" id="emptyState">
+                    <img src="src/empty-courses.png" alt="No courses">
+                    <p>No courses started yet. Start learning today!</p>
+                    <a href="home.html" class="browse-btn">Browse Courses</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+        const myCoursesList = document.getElementById('myCoursesList');
+        const emptyState = document.getElementById('emptyState');
+        const coursesCount = document.getElementById('coursesCount');
+        
+        const myCourses = JSON.parse(localStorage.getItem('myCourses')) || [];
+        
+        if (myCourses.length > 0) {
+            emptyState.style.display = 'none';
+            coursesCount.textContent = myCourses.length;
+            
+            const totalProgress = myCourses.reduce((acc, course) => acc + (course.progress || 0), 0) / myCourses.length;
+            document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = `${Math.round(totalProgress)}%`;
+            
+            myCourses.forEach(course => {
+                const progress = course.progress || 0;
+                const courseCard = `
+                    <div class="course-card">
+                        <img src="${course.image}" alt="${course.title}">
+                        <h3>${course.title}</h3>
+                        <p>${course.description}</p>
+                        <div class="course-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${progress}%"></div>
+                            </div>
+                            <p class="progress-text">${Math.round(progress)}% Complete</p>
+                        </div>
+                        <div class="course-actions">
+                            <button class="start-btn" data-course="${course.title}">
+                                ${progress === 100 ? 'Retake Course' : 'Continue Learning'}
+                            </button>
+                            <div class="action-buttons">
+                            <button class="reset-btn" data-course="${course.title}" title="Reset Progress">
+                                <svg viewBox="0 0 24 24" width="16" height="16">
+                                    <path fill="currentColor" d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                                </svg>
+                            </button>
+                            <button class="remove-btn" data-course="${course.title}" title="Remove Course">
+                                <svg viewBox="0 0 24 24" width="16" height="16">
+                                    <path fill="currentColor" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                myCoursesList.insertAdjacentHTML('beforeend', courseCard);
+            });
+
+                document.querySelectorAll('.start-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const courseTitle = this.dataset.course;
+                        switch(courseTitle) {
+                            case 'Machine Learning':
+                                window.location.href = 'mlcourse.html';
+                                break;
+                            case 'Deep Learning':
+                                window.location.href = 'dlquiz.html';
+                                break;
+                            case 'Data Science':
+                                window.location.href = 'dsquiz.html';
+                                break;
+                            case 'Data Analytics':
+                                window.location.href = 'daquiz.html';
+                                break;
+                            case 'Full Stack Development':
+                                window.location.href = 'fsd.html';
+                                break;
+                            case 'Generative AI':
+                                window.location.href = 'genai.html';
+                                break;
+                            default:
+                                console.log('Course not found');
+                        }
+                    });
+                });
+    
+                document.querySelectorAll('.reset-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const courseTitle = this.dataset.course;
+                        const confirmation = confirm(`Are you sure you want to reset progress for "${courseTitle}"?`);
+        
+                        if (confirmation) {
+                            const myCourses = JSON.parse(localStorage.getItem('myCourses')) || [];
+                            const courseIndex = myCourses.findIndex(course => course.title === courseTitle);
+            
+                            if (courseIndex !== -1) {
+                                myCourses[courseIndex].progress = 0;
+                                localStorage.setItem('myCourses', JSON.stringify(myCourses));
+                                const card = this.closest('.course-card');
+                                const progressFill = card.querySelector('.progress-fill');
+                                const progressText = card.querySelector('.progress-text');
+                                const continueBtn = card.querySelector('.start-btn');
+                
+                                progressFill.style.width = '0%';
+                                progressText.textContent = '0% Complete';
+                                continueBtn.textContent = 'Continue Learning';
+                
+                                const totalProgress = myCourses.reduce((acc, course) => acc + (course.progress || 0), 0) / myCourses.length;
+                                document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = `${Math.round(totalProgress)}%`;
+                            }
+                        }
+                        });
+                    });
+        document.querySelectorAll('.remove-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const courseTitle = this.dataset.course;
+                const confirmation = confirm(`Are you sure you want to remove "${courseTitle}" from your courses?`);
+        
+                if (confirmation) {
+                    const myCourses = JSON.parse(localStorage.getItem('myCourses')) || [];
+                    const updatedCourses = myCourses.filter(course => course.title !== courseTitle);
+            
+                    localStorage.setItem('myCourses', JSON.stringify(updatedCourses));
+            
+                    const card = this.closest('.course-card');
+                    card.style.animation = 'fadeOut 0.3s ease';
+                    setTimeout(() => {
+                        card.remove();
+                
+                        coursesCount.textContent = updatedCourses.length;
+                
+                        if (updatedCourses.length > 0) {
+                            const totalProgress = updatedCourses.reduce((acc, course) => acc + (course.progress || 0), 0) / updatedCourses.length;
+                            document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = `${Math.round(totalProgress)}%`;
+                        } else {
+                            document.querySelector('.stat-card:nth-child(2) .stat-number').textContent = '0%';
+                            emptyState.style.display = 'block';
+                        }
+                    }, 300);
+                }
+            });
+        });
+    }});
+    </script>
+</body>
+</html>

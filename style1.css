@@ -1,0 +1,469 @@
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --dark-blue: #f14f66;
+    --light-blue: #4c539f;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--white);
+    color: var(--dark-blue);
+}
+
+header {
+    background-color: var(--dark-blue);
+    padding: 1rem 2rem; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.site-title {
+    color: var(--white);
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    margin: 0; 
+    padding: 0; 
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0; 
+    padding: 0; 
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .site-title {
+        font-size: 1.5rem;
+    }
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--white);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav li {
+    position: relative;
+}
+
+nav li:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .site-title {
+        font-size: 1.5rem;
+    }
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background-image: url('src/ml\ background.webp'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-blue);
+}
+
+.roadmap-section {
+    padding: 4rem 2rem;
+    background-color: var(--white);
+}
+
+.roadmap-section h2 {
+    text-align: center;
+    color: var(--dark-blue);
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.roadmap-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, var(--dark-blue), var(--light-blue));
+    border-radius: 2px;
+}
+
+.roadmap-section h2::before {
+    content: '🎯'; 
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+}
+
+@keyframes slideIn {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100px;
+    }
+}
+
+.roadmap-section h2::after {
+    animation: slideIn 1s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+    .roadmap-section h2 {
+        font-size: 2.2rem;
+        padding-bottom: 10px;
+    }
+}
+
+.roadmap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.roadmap-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.roadmap-image:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .roadmap-section {
+        padding: 2rem 1rem;
+    }
+    
+    .roadmap-section h2 {
+        font-size: 2rem;
+    }
+}
+
+.learning-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+}
+
+.learning-section h2 {
+    text-align: center;
+    color: var(--dark-blue);
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.learning-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, var(--dark-blue), var(--light-blue));
+    border-radius: 2px;
+    animation: slideIn 1s ease-out forwards;
+}
+
+.learning-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.course-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.course-card h3 {
+    padding: 1rem;
+    color: var(--dark-blue);
+    font-size: 1.2rem;
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.progress-bar {
+    height: 4px;
+    background: #f0f0f0;
+    margin-top: 1rem;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background: var(--dark-blue);
+    transition: width 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .learning-section {
+        padding: 3rem 1rem;
+    }
+
+    .learning-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .learning-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.video-container.loading::before {
+    content: 'Loading...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--dark-blue);
+    animation: pulse 1.5s infinite;
+}
+
+.about-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-section h2 {
+    text-align: center;
+    color: var(--dark-blue);
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.about-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, var(--dark-blue), var(--light-blue));
+    border-radius: 2px;
+    animation: slideIn 1s ease-out forwards;
+}
+
+.about-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.applications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.application-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.application-card:hover {
+    transform: translateY(-5px);
+}
+
+.application-card h3 {
+    color: var(--dark-blue);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.application-card p {
+    color: #666;
+    text-align: center;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 3rem 1rem;
+    }
+    
+    .about-section h2 {
+        font-size: 2.2rem;
+    }
+    
+    .about-text {
+        font-size: 1.1rem;
+    }
+    
+    .applications-grid {
+        grid-template-columns: 1fr;
+    }
+}

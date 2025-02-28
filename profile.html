@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Skill Toon</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="settings.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Righteous&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header-home">
+        <div class="nav-container">
+            <a href="home.html" class="site-title">Skill Toon</a>
+            <nav class="nav-menu">
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="mylearning.html" class="nav-link">My Learning</a>
+                <div class="user-profile">
+                    <img src="src/OIP.jpg" alt="Profile" class="profile-pic">
+                    <div class="dropdown-content">
+                        <a href="profile.html" class="active">Profile</a>
+                        <a href="settings.html">Settings</a>
+                        <a href="index.html">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="profile-main">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="src/OIP.jpg" alt="Profile Avatar" id="profile-image">
+                    <input type="file" id="avatarUpload" accept="image/*" style="display: none">
+                    <label for="avatarUpload" class="change-avatar-btn">Change Photo</label>
+                </div>
+                <div class="profile-info">
+                    <h1 id="user-greeting">Welcome!</h1>
+                    <div class="profile-details">
+                        <p class="profile-bio">Learning enthusiast | Machine Learning Student</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Courses</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">85%</span>
+                        <span class="stat-label">Completion</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">120</span>
+                        <span class="stat-label">Hours</span>
+                    </div>
+                </div>
+
+                <div class="achievements-section">
+                    <h2>Achievements</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🏆</div>
+                            <h3>Quick Learner</h3>
+                            <p>Completed 3 courses in first month</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">⭐</div>
+                            <h3>Perfect Score</h3>
+                            <p>100% in ML Basics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+<script src="profile.js"></script>
+</body>
+</html>
